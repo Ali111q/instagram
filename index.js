@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 
 async function loginToInstagram(username, password) {
+    return new Promise(async(res,rej)=>{
     try {
         const browser = await puppeteer.launch({ headless: false });
         const page = await browser.newPage();
@@ -19,11 +20,15 @@ async function loginToInstagram(username, password) {
 
         // Wait for the page to navigate to the logged-in page
         await page.waitForNavigation();
+        await page.click('button[class="_acan _aiit _acao _aija _acas _aj1-"]')
+        await page.waitForNavigation();
 
+        await page.click('button[class="_a9-- _a9_1"')
         // Check if the user is logged in by looking for the logout button
-        const logoutButton = await page.$('a[href="/accounts/logout/"]');
+        const logoutButton = await page.$('a[class="x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _acan _aiit _acao _aija _acat _acaw _aj1- _a6hd"]');
         if (logoutButton) {
             console.log('Logged in successfully');
+            
         } else {
             console.log('Failed to log in');
         }
@@ -32,8 +37,10 @@ async function loginToInstagram(username, password) {
     } catch (err) {
         console.log(err);
     }
+})
 }
 async function getFollowers(username) {
+    
     try {
         const browser = await puppeteer.launch({ headless: false });
         const page = await browser.newPage();
@@ -62,8 +69,9 @@ async function getFollowers(username) {
     } catch (err) {
         console.log(err);
     }
+    
 }
 
 
-loginToInstagram('k.5mr', 'Prpr.123');
+loginToInstagram('fls_6', 'Ali10109989');
 // getFollowers('k.5mr');
